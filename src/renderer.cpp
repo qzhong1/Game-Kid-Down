@@ -79,7 +79,7 @@ void Renderer::UpdateKidPosition(Kid &kid){
   kid_image_position.x = kid._pos_x;
   kid_image_position.y = kid._pos_y;
   
-  SDL_BlitSurface(kid_image, NULL, sdl_window_surface, NULL);
+  SDL_BlitSurface(kid_image, NULL, sdl_window_surface, &kid_image_position);
   SDL_UpdateWindowSurface(sdl_window);
 
   // SDL_RenderCopy(sdl_renderer, kid_texture, NULL, &kid_image_position);
