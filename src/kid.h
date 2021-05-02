@@ -5,10 +5,10 @@
 
 enum Direction{kLeft, kRight};
 
-class kid
+class Kid
 {
 private:
-    float _speed;
+    float _speed{10};
     float _blood{10};
     int _grid_width;
     int _grid_height;
@@ -18,10 +18,11 @@ public:
     bool _alive{true};
     float _pos_x;
     float _pos_y;
+    Direction _direction;
 
-    kid(float speed, float x, float y, int w, int h)
-        :_speed(speed), _pos_x(x), _pos_y(y), 
-        _grid_width(w), _grid_height(h) {};
+    Kid(int w, int h)
+        :_grid_width(w), _grid_height(h){};
+    
     float GetBlood() {return _blood;};
     void ReduceBlood(float time);
     void UpdatePosition();
