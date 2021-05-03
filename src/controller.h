@@ -3,7 +3,8 @@
 
 #include "kid.h"
 #include "bar.h"
-#include "SDL.h"
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include "renderer.h"
 
 class Controller
@@ -11,7 +12,8 @@ class Controller
 private:
     
 public:
-    void HandleInput(bool &running, Kid &kid, Renderer &renderer) const;
+    SDL_Event e;
+    void HandleInput(bool &running, Kid &kid, Renderer &renderer);
 };
 
 #endif

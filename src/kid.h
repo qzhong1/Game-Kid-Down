@@ -2,31 +2,37 @@
 #define KID_H
 
 #include "bar.h"
+#include <vector>
 
 enum Direction{kLeft, kRight};
+enum BarType {normal, moving, damaging, none};
 
 class Kid
 {
 private:
-    float _speed{10};
+    
     float _blood{10};
     int _grid_width;
     int _grid_height;
     bool _on_bar{true};
+    BarType _current_bar;
 
 public:
     bool _alive{true};
-    float _pos_x;
-    float _pos_y;
+    float _pos_x{320};
+    float _pos_y{0};
     Direction _direction;
-
+    float _speed{10};
+    
     Kid(int w, int h)
         :_grid_width(w), _grid_height(h){};
     
     float GetBlood() {return _blood;};
     void ReduceBlood(float time);
-    void UpdatePosition();
-    bool FallOnBar();
+    void UpdatePosition(float x, float y);
+    void FallOnBar(std::vector<Normalbar> &_normalbar_group,
+                   std::vector<Movingbar> &_movingbar_group,
+                   std::vector<Damagebar> &_damagebar_group);
 };
 
 #endif

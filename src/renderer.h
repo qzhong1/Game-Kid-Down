@@ -3,36 +3,34 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include "kid.h"
-#include "bar.h"
+#include <iostream>
+#include <memory>
 #include <vector>
+#include "kid.h"
 
-class Renderer {
- public:
-  Renderer(const std::size_t screen_width, const std::size_t screen_height,
-           const std::size_t grid_width, const std::size_t grid_height);
-  ~Renderer();
-  void UpdateKidPosition(Kid &kid);
-  void Render(Kid &kid, std::vector<Normalbar> normal_bar,
-              std::vector<Movingbar> moving_bar, std::vector<Damagebar> damage_bar);
-  void UpdateWindowTitle(int score, int frame_count);
-  void InitKid(Kid &kid);
+class Renderer
+{
+public:
+    Renderer(int screen_width, int screen_height);
+    ~Renderer();
+    void draw(Kid &kid);
+    
+    void run(bool &running);
+    void UpdateWindowTitle(int score, int frame_count);
 
- private:
-  SDL_Window    *sdl_window;
-  SDL_Surface   *sdl_window_surface;
-  SDL_Renderer  *sdl_renderer;
-  SDL_Surface   *kid_image;
-  SDL_Texture   *kid_texture;
-  SDL_Rect      kid_image_position;
-  SDL_Surface   *background_image;
-  SDL_Texture   *background_texture;
+    SDL_Rect     kid_image_position;
+    SDL_Rect     damagebar_image_position;
+private:
 
-  const std::size_t screen_width;
-  const std::size_t screen_height;
-  const std::size_t grid_width;
-  const std::size_t grid_height;
+    SDL_Surface *kid_image;
+    SDL_Surface *background_image;
+    SDL_Surface *damagebar_image;
+    SDL_Surface *movingbar_image;
+
+    SDL_Window  *sdl_window;
+    SDL_Surface *sdl_window_surface;
+
+    SDL_Renderer *sdl_renderer;
 };
-
 
 #endif

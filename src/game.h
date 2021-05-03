@@ -24,13 +24,13 @@ private:
     std::uniform_int_distribution<int> random_start;
     std::uniform_int_distribution<int> random_length;
 
-    void Update();
+    void Update(Renderer &renderer);
     void BarInitiate(int w, int h);
     
 public:
     Kid _kid;
     Game(int w, int h);
-    void Run(Controller const &controller, Renderer &renderer,
+    void Run(Controller &controller, Renderer &renderer,
            std::size_t target_frame_duration);
     int GetScore() const;
 
