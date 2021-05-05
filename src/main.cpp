@@ -5,7 +5,7 @@
 
 int main()
 {   constexpr std::size_t kScreenWidth{640};
-    constexpr std::size_t kScreenHeight{800};
+    constexpr std::size_t kScreenHeight{640};
 
     bool running = true;
     Renderer renderer(kScreenWidth, kScreenHeight);
