@@ -3,8 +3,8 @@
 Game::Game(int w, int h)
     : _kid(w, h),
       engine(dev()),
-      random_start(0, static_cast<int>(w - 1)),
-      random_length(0, static_cast<int>(h - 1)) {
+      random_start(0, static_cast<int>(w * 4/5)),
+      random_length(static_cast<int>(w / 5), static_cast<int>(w / 3)) {
     
   BarInitiate(w, h);
 }
@@ -24,7 +24,8 @@ void Game::Run(Controller &controller, Renderer &renderer,
     // Input, Update, Render - the main game loop.
     controller.HandleInput(running, _kid, renderer);
     Update(renderer);
-    renderer.draw(_kid);
+    renderer.SetBarHeight(_normalbar_group, _movingbar_group, _damagebar_group);
+    renderer.Draw(_kid);
 
     frame_end = SDL_GetTicks();
 
@@ -61,34 +62,37 @@ int Game::GetScore() const {
 }
 
 void Game::BarInitiate(int w, int h){
-  Damagebar testbar(200, 250);
-  testbar.SetCurrentHeight(320);
-    _damagebar_group.emplace_back(testbar);
-    Movingbar testbar1(200, 250);
-    testbar1.SetCurrentHeight(620);
-    _movingbar_group.emplace_back(testbar1);
-    Normalbar testbar2(200, 250);
-    testbar2.SetCurrentHeight(620);
-    _normalbar_group.emplace_back(testbar2);
+  // Damagebar testbar(200, 250);
+  // testbar.SetCurrentHeight(320);
+  //   _damagebar_group.emplace_back(testbar);
+    // Movingbar testbar1(200, 250);
+    // testbar1.SetCurrentHeight(620);
+    // _movingbar_group.emplace_back(testbar1);
+    // Normalbar testbar2(200, 250);
+    // testbar2.SetCurrentHeight(220);
+    // _normalbar_group.emplace_back(testbar2);
   
-  // for(int i = 0; i <10; i++){
-  //   float start_pos = random_start(engine);
-  //   float length = random_length(engine);
-  //   Normalbar normalbar(length, start_pos);
-  //   _normalbar_group.emplace_back(normalbar);
-  // }
+  for(int i = 0; i <10; i++){
+    float start_pos = random_start(engine);
+    float length = random_length(engine);
+    Normalbar normalbar(length, start_pos);
+    _normalbar_group.emplace_back(normalbar);
+  }
 
-  // for(int i = 0; i <5; i++){
-  //   float start_pos = random_start(engine);
-  //   float length = random_length(engine);
-  //   Movingbar movingbar(length, start_pos);
-  //   _movingbar_group.emplace_back(movingbar);
-  // }
+  for(int i = 0; i <5; i++){
+    float start_pos = random_start(engine);
+    float length = random_length(engine);
+    Movingbar movingbar(length, start_pos);
+    
+    _movingbar_group.emplace_back(movingbar);
+    _movingbar_group[i].SetCurrentHeight(i*60+320);
+  }
 
-  // for(int i = 0; i <5; i++){
-  //   float start_pos = random_start(engine);
-  //   float length = random_length(engine);
-  //   Damagebar damagebar(length, start_pos);
-  //   _damagebar_group.emplace_back(damagebar);
-  // }
+  for(int i = 0; i <5; i++){
+    float start_pos = random_start(engine);
+    float length = random_length(engine);
+    Damagebar damagebar(length, start_pos);
+    damagebar.SetCurrentHeight(i*60+60);
+    _damagebar_group.emplace_back(damagebar);
+  }
 }

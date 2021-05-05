@@ -19,9 +19,9 @@ public:
     Renderer(int screen_width, int screen_height);
     ~Renderer();
     void Draw(Kid &kid);
-    void SetBarHeight(std::vector<Normalbar>& normalbar, 
-                      std::vector<Movingbar>& movingbar,
-                      std::vector<Damagebar>& damagebar);
+    void SetBarHeight(std::deque<Normalbar>& normalbar, 
+                      std::deque<Movingbar>& movingbar,
+                      std::deque<Damagebar>& damagebar);
     void RenderBars();
     void UpdateWindowTitle(int score, int frame_count);
 

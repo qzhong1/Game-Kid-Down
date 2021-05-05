@@ -8,15 +8,16 @@
 #include "kid.h"
 #include "bar.h"
 #include <vector>
+#include <deque>
 #include <random>
 
 class Game
 {
 private:
     
-    std::vector<Normalbar> _normalbar_group;
-    std::vector<Movingbar> _movingbar_group;
-    std::vector<Damagebar> _damagebar_group;
+    std::deque<Normalbar> _normalbar_group;
+    std::deque<Movingbar> _movingbar_group;
+    std::deque<Damagebar> _damagebar_group;
     int score{0};
 
     std::random_device dev;

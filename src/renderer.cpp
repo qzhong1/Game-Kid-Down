@@ -86,36 +86,44 @@ void Renderer::Draw(Kid &kid){
     SDL_UpdateWindowSurface(sdl_window);
 }
 
-void Renderer::SetBarHeight(std::vector<Normalbar>& normalbar, 
-                            std::vector<Movingbar>& movingbar, 
-                            std::vector<Damagebar>& damagebar){
+void Renderer::SetBarHeight(std::deque<Normalbar>& normalbar, 
+                            std::deque<Movingbar>& movingbar, 
+                            std::deque<Damagebar>& damagebar){
     // Set bars height according to locations in game.cpp
     SDL_Rect normalbar_image_position;
     normalbar_image_position.h = kBarThickness;
-    for (auto bar : normalbar){
-        normalbar_image_position.x = bar.GetStartPos();
-        normalbar_image_position.y = bar.GetCurrentHeight();
-        normalbar_image_position.w = bar.GetLength();
-        normalbar_image_position_group.emplace_back(normalbar_image_position);
+    if (!normalbar.empty()){
+        for (auto bar : normalbar){
+            normalbar_image_position.x = bar.GetStartPos();
+            normalbar_image_position.y = bar.GetCurrentHeight();
+            normalbar_image_position.w = bar.GetLength();
+            normalbar_image_position_group.emplace_back(normalbar_image_position);
+        }
     }
-
+    
     SDL_Rect movingbar_image_position;
     movingbar_image_position.h = kBarThickness;
-    for (auto bar : movingbar){
-        movingbar_image_position.x = bar.GetStartPos();
-        movingbar_image_position.y = bar.GetCurrentHeight();
-        movingbar_image_position.w = bar.GetLength();
-        movingbar_image_position_group.emplace_back(movingbar_image_position);
+    if (!movingbar.empty()){
+        for (auto bar : movingbar){
+            movingbar_image_position.x = bar.GetStartPos();
+            movingbar_image_position.y = bar.GetCurrentHeight();
+            movingbar_image_position.w = bar.GetLength();
+            movingbar_image_position_group.emplace_back(movingbar_image_position);
+        }
     }
+    
 
     SDL_Rect damagebar_image_position;
     damagebar_image_position.h = kBarThickness;
-    for (auto bar : damagebar){
-        damagebar_image_position.x = bar.GetStartPos();
-        damagebar_image_position.y = bar.GetCurrentHeight();
-        damagebar_image_position.w = bar.GetLength();
-        damagebar_image_position_group.emplace_back(damagebar_image_position);
+    if (!damagebar.empty()){
+        for (auto bar : damagebar){
+            damagebar_image_position.x = bar.GetStartPos();
+            damagebar_image_position.y = bar.GetCurrentHeight();
+            damagebar_image_position.w = bar.GetLength();
+            damagebar_image_position_group.emplace_back(damagebar_image_position);
+        }
     }
+    
 }
 
 void UpdateWindowTitle(int score, int frame_count){

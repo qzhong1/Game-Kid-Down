@@ -2,7 +2,7 @@
 #define KID_H
 
 #include "bar.h"
-#include <vector>
+#include <deque>
 
 enum Direction{kLeft, kRight};
 enum BarType {normal, moving, damaging, none};
@@ -30,9 +30,9 @@ public:
     float GetBlood() {return _blood;};
     void ReduceBlood(float time);
     void UpdatePosition(float x, float y);
-    void FallOnBar(std::vector<Normalbar> &_normalbar_group,
-                   std::vector<Movingbar> &_movingbar_group,
-                   std::vector<Damagebar> &_damagebar_group);
+    void FallOnBar(std::deque<Normalbar> &_normalbar_group,
+                   std::deque<Movingbar> &_movingbar_group,
+                   std::deque<Damagebar> &_damagebar_group);
 };
 
 #endif

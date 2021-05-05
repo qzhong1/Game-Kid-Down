@@ -5,9 +5,9 @@ void Kid::UpdatePosition(float x, float y)
     _pos_y = y;
 }
 
-void Kid::FallOnBar(std::vector<Normalbar> &_normalbar_group,
-                    std::vector<Movingbar> &_movingbar_group,
-                    std::vector<Damagebar> &_damagebar_group){
+void Kid::FallOnBar(std::deque<Normalbar> &_normalbar_group,
+                    std::deque<Movingbar> &_movingbar_group,
+                    std::deque<Damagebar> &_damagebar_group){
     // Check if kid y position matches any normalbar
     for (auto bar : _normalbar_group){
         if (bar.GetCurrentHeight() - _pos_y < 1 && 
