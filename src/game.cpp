@@ -17,6 +17,8 @@ void Game::Run(Controller &controller, Renderer &renderer,
     int frame_count = 0;
     bool running = true;
 
+    renderer.InitKidPos(_kid);
+    
     while (running) {
         frame_start = SDL_GetTicks();
 
@@ -81,6 +83,21 @@ void Game::BarInitiate(){
     // Pick 10 bars from the source for initial frame
     for (int i = 0; i <10; i++){
         PickNewBar(i*60+60);
+
+        // Get the x position of the first bar to set kid initial position
+        float init_kid_x;
+        if (i == 0) {
+            if (!_normalbar_group_present.empty())
+                init_kid_x = (_normalbar_group_present[0].GetStartPos() + 
+                              _normalbar_group_present[0].GetEndPos()) / 2;
+            if (!_damagebar_group_present.empty())
+                init_kid_x = (_damagebar_group_present[0].GetStartPos() + 
+                              _damagebar_group_present[0].GetEndPos()) / 2;
+            if (!_movingbar_group_present.empty())
+                init_kid_x = (_movingbar_group_present[0].GetStartPos() + 
+                              _movingbar_group_present[0].GetEndPos()) / 2;
+        }
+        _kid._pos_x = init_kid_x;
     }
 }
 

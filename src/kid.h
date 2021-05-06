@@ -6,6 +6,7 @@
 
 enum Direction{kLeft, kRight};
 enum BarType {normal, moving, damaging, none};
+constexpr std::size_t kFallingSpeed{5};
 
 class Kid
 {
@@ -19,7 +20,7 @@ private:
 
 public:
     bool _alive{true};
-    float _pos_x{320};
+    float _pos_x;
     float _pos_y{0};
     Direction _direction;
     float _speed{10};
@@ -29,7 +30,6 @@ public:
     
     float GetBlood() {return _blood;};
     void ReduceBlood(float time);
-    void UpdatePosition(float x, float y);
     void FallOnBar(std::deque<Normalbar> &_normalbar_group,
                    std::deque<Movingbar> &_movingbar_group,
                    std::deque<Damagebar> &_damagebar_group);

@@ -38,7 +38,7 @@ Renderer::Renderer(int screen_width, int screen_height)
         std::cout << "Failed to load kid image\n";
         std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
     }
-    kid_image_position.x = 320;
+    // kid_image_position.x = 320;
     kid_image_position.y = 0;
     kid_image_position.w = kKidWidth;
     kid_image_position.h = kKidHeight;
@@ -67,9 +67,12 @@ Renderer::~Renderer(){
     SDL_FreeSurface(sdl_window_surface);
     SDL_DestroyWindow(sdl_window);
 }
+void Renderer::InitKidPos(Kid &kid){
+    kid_image_position.x = kid._pos_x;
+}
 
 void Renderer::Draw(Kid &kid){
-    
+
     SDL_BlitSurface(background_image, NULL, sdl_window_surface, NULL);
     SDL_BlitScaled(kid_image, NULL, sdl_window_surface, &kid_image_position);
 

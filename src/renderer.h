@@ -11,7 +11,7 @@
 
 constexpr std::size_t kKidHeight{40};
 constexpr std::size_t kKidWidth{20};
-constexpr std::size_t kBarThickness{30};
+constexpr std::size_t kBarThickness{20};
 
 class Renderer
 {
@@ -19,6 +19,7 @@ public:
     Renderer(int screen_width, int screen_height);
     ~Renderer();
     void Draw(Kid &kid);
+    void InitKidPos(Kid &kid);
     void SetBarHeight(std::deque<Normalbar>& normalbar, 
                       std::deque<Movingbar>& movingbar,
                       std::deque<Damagebar>& damagebar);

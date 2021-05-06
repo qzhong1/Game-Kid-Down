@@ -1,9 +1,5 @@
 #include "kid.h"
 #include <iostream>
-void Kid::UpdatePosition(float x, float y)
-{   _pos_x = x;
-    _pos_y = y;
-}
 
 void Kid::FallOnBar(std::deque<Normalbar> &_normalbar_group,
                     std::deque<Movingbar> &_movingbar_group,
@@ -34,5 +30,5 @@ void Kid::FallOnBar(std::deque<Normalbar> &_normalbar_group,
         }
     }
     _current_bar = none;
-    _pos_y += 10;
+    _pos_y += kFallingSpeed;
 }
