@@ -43,7 +43,7 @@ Renderer::Renderer(int screen_width, int screen_height)
     kid_image_position.w = kKidWidth;
     kid_image_position.h = kKidHeight;
 
-    damagebar_image = IMG_Load("../img/Damagingbar.png");
+    damagebar_image = IMG_Load("../img/DamagingBar.png");
     if(!damagebar_image)
     {
         std::cout << "Failed to load damagebar image\n";
