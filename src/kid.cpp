@@ -10,7 +10,7 @@ void Kid::FallOnBar(std::deque<Normalbar> &_normalbar_group,
                     std::deque<Damagebar> &_damagebar_group){
     // Check if kid y position matches any normalbar
     for (auto bar : _normalbar_group){
-        if (bar.GetCurrentHeight() - _pos_y < 1 && 
+        if (abs(bar.GetCurrentHeight() - _pos_y) < 1 && 
             bar.GetStartPos() <= _pos_x && 
             bar.GetEndPos() >= _pos_x){
             _current_bar = normal;
@@ -18,7 +18,7 @@ void Kid::FallOnBar(std::deque<Normalbar> &_normalbar_group,
         }
     }
     for (auto bar : _movingbar_group){
-        if (bar.GetCurrentHeight() - _pos_y < 1 && 
+        if (abs(bar.GetCurrentHeight() - _pos_y) < 1 && 
             bar.GetStartPos() <= _pos_x && 
             bar.GetEndPos() >= _pos_x){
             _current_bar = moving;
@@ -26,7 +26,7 @@ void Kid::FallOnBar(std::deque<Normalbar> &_normalbar_group,
         }
     }
     for (auto bar : _damagebar_group){
-        if (bar.GetCurrentHeight() - _pos_y < 1 && 
+        if (abs(bar.GetCurrentHeight() - _pos_y) < 1 && 
             bar.GetStartPos() <= _pos_x && 
             bar.GetEndPos() >= _pos_x){
             _current_bar = damaging;
