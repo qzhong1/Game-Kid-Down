@@ -9,6 +9,7 @@ protected:
     float _curr_pos_y;
 public:
     void VerticalUpdate();
+    float GetLength() {return _length;}
     float GetCurrentHeight() {return _curr_pos_y;}
     void SetCurrentHeight(float h) {_curr_pos_y = h;}
     float GetStartPos() {return _start_pos_x;}
