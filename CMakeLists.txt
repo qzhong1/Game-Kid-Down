@@ -10,10 +10,12 @@ project(KidDown)
 
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
+find_package(SDL2_ttf REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
 include_directories(${SDL2_IMAGE_DIRS})
+include_directories(${SDL2TTF_INCLUDE_DIRS})
 
 add_executable(KidDown src/main.cpp src/renderer.cpp src/controller.cpp src/game.cpp src/bar.cpp src/kid.cpp)
 
 string(STRIP "${SDL2_LIBRARIES}" SDL2_LIBRARIES)
-target_link_libraries(KidDown ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES})
+target_link_libraries(KidDown ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${SDL2TTF_LIBRARIES})
