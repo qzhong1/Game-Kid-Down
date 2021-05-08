@@ -1,7 +1,8 @@
 #include "game.h"
-
+#include "bar.h"
+#include <iostream>
 Game::Game(int w, int h)
-    :_kid(w, h), engine(dev()), 
+    :_kid(w, h), engine(dev()), window_height(h), window_width(w),
     random_start(0, static_cast<int>(w * 4/5)),
     random_length(static_cast<int>(w / 5), static_cast<int>(w / 3))
 {
@@ -25,9 +26,11 @@ void Game::Run(Controller &controller, Renderer &renderer,
         
         // Input, Update, Render - the main game loop
         controller.HandleInput(running, _kid, renderer);
-        Update(renderer);
+        // Update bar image height
         renderer.SetBarHeight(_normalbar_group_present, _movingbar_group_present, _damagebar_group_present);
+        ReplaceBar();
         renderer.Draw(_kid);
+        Update(renderer);
         frame_end = SDL_GetTicks();
         // Hold the game before user press down key
         while(wait) {
@@ -57,7 +60,30 @@ void Game::Update(Renderer &renderer){
     if (!_kid._alive)
         return;
     _kid.FallOnBar(_normalbar_group_present, _movingbar_group_present, _damagebar_group_present);
+    if (_kid.GetOnBar()) {
+        _kid._pos_y -= kBarHeightIncrement;
+    }
     renderer.kid_image_position.y = _kid._pos_y;
+
+    // Update bar height
+    if (!_normalbar_group_present.empty()) {
+        for(auto &bar : _normalbar_group_present) {
+            bar.IncreaseHeight(); 
+        }
+    }
+        
+    if (!_movingbar_group_present.empty()) {
+        for(auto &bar : _movingbar_group_present) {
+            bar.IncreaseHeight(); 
+        }
+    }
+        
+    if (!_damagebar_group_present.empty()) {
+        for(auto &bar : _damagebar_group_present) {
+            bar.IncreaseHeight(); 
+        }
+    }
+        
 }
 
 int Game::GetScore() const {
@@ -121,4 +147,29 @@ void Game::PickNewBar(float height){
         _damagebar_group_source[bar_index-15].SetCurrentHeight(height);
         _damagebar_group_present.emplace_back(_damagebar_group_source[bar_index-15]);
         }
+}
+
+void Game::ReplaceBar() {
+    // Add new bar if height of the last bar is more than 60 from window buttom
+    if (_normalbar_group_present.back().GetCurrentHeight() < window_height - 60 &&
+    _movingbar_group_present.back().GetCurrentHeight() < window_height - 60 &&
+    _damagebar_group_present.back().GetCurrentHeight() < window_height - 60 ){
+        PickNewBar(window_height);
+    }
+    if (!_normalbar_group_present.empty()) {
+        if (_normalbar_group_present.front().GetCurrentHeight() <= 0){
+            _normalbar_group_present.pop_front();
+        }
+    }
+    if (!_movingbar_group_present.empty()) {
+        if (_movingbar_group_present.front().GetCurrentHeight() <= 0){
+            _movingbar_group_present.pop_front();
+        }
+    }
+    if (!_damagebar_group_present.empty()) {
+        if (_damagebar_group_present.front().GetCurrentHeight() <= 0){
+            _damagebar_group_present.pop_front();
+        }
+    }
+    
 }

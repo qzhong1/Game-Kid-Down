@@ -30,9 +30,13 @@ private:
     std::uniform_int_distribution<int> random_start;
     std::uniform_int_distribution<int> random_length;
 
+    int window_width;
+    int window_height;
+
     void Update(Renderer &renderer);
     void BarInitiate();
     void PickNewBar(float height);
+    void ReplaceBar(); 
 
 public:
     Kid _kid;
