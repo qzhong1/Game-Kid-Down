@@ -16,19 +16,21 @@ void Game::Run(Controller &controller, Renderer &renderer,
     Uint32 frame_duration;
     int frame_count = 0;
     bool running = true;
+    bool wait = true;
 
     renderer.InitKidPos(_kid);
     
     while (running) {
         frame_start = SDL_GetTicks();
-
+        
         // Input, Update, Render - the main game loop
         controller.HandleInput(running, _kid, renderer);
         Update(renderer);
         renderer.SetBarHeight(_normalbar_group_present, _movingbar_group_present, _damagebar_group_present);
         renderer.Draw(_kid);
         frame_end = SDL_GetTicks();
-
+        // Hold the game before user press down key
+        while(wait) {controller.StartGame(wait);}
         // Keep track of how long each loop through the input/update/render cycle takes
         frame_count++;
         frame_duration = frame_end - frame_start;

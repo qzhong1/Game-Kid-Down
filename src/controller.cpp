@@ -18,3 +18,15 @@ void Controller::HandleInput(bool &running, Kid &kid, Renderer &renderer){
         }
     }
 }    
+
+void Controller::StartGame(bool &wait){
+    while (SDL_PollEvent(&check)) {
+        if (check.type == SDL_KEYDOWN)
+            switch (check.key.keysym.sym)
+            {
+            case SDLK_DOWN:
+                wait = false;
+                break;
+            }
+    }
+}

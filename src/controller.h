@@ -13,7 +13,9 @@ private:
     
 public:
     SDL_Event e;
+    SDL_Event check;
     void HandleInput(bool &running, Kid &kid, Renderer &renderer);
+    void StartGame(bool &wait);
 };
 
 #endif
