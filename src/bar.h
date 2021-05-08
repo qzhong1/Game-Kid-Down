@@ -1,6 +1,8 @@
 #ifndef BAR_H
 #define BAR_H
 
+constexpr float kBarHeightIncrement{0.5};
+
 class Bar
 {   
 protected:
@@ -14,6 +16,7 @@ public:
     void SetCurrentHeight(float h) {_curr_pos_y = h;}
     float GetStartPos() {return _start_pos_x;}
     float GetEndPos() {return _start_pos_x + _length;}
+    void IncreaseHeight() {_curr_pos_y -= kBarHeightIncrement;}
 };
 
 // The normal bar which is stationary
