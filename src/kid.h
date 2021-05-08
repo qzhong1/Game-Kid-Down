@@ -4,6 +4,9 @@
 #include "bar.h"
 #include <deque>
 
+constexpr std::size_t kKidHeight{40};
+constexpr std::size_t kKidWidth{20};
+
 enum Direction{kLeft, kRight};
 enum BarType {normal, moving, damaging, none};
 constexpr std::size_t kFallingSpeed{5};
@@ -29,6 +32,7 @@ public:
         :_grid_width(w), _grid_height(h){};
     
     float GetBlood() {return _blood;};
+    bool GetOnBar() {return _on_bar;}
     void ReduceBlood(float time);
     void FallOnBar(std::deque<Normalbar> &_normalbar_group,
                    std::deque<Movingbar> &_movingbar_group,
