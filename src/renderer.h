@@ -3,14 +3,13 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
 #include <iostream>
 #include <memory>
 #include <deque>
 #include "kid.h"
 #include "bar.h"
 
-constexpr std::size_t kKidHeight{40};
-constexpr std::size_t kKidWidth{20};
 constexpr std::size_t kBarThickness{20};
 
 class Renderer

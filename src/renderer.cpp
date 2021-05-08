@@ -95,6 +95,7 @@ void Renderer::SetBarHeight(std::deque<Normalbar>& normalbar,
     // Set bars height according to locations in game.cpp
     SDL_Rect normalbar_image_position;
     normalbar_image_position.h = kBarThickness;
+    normalbar_image_position_group.clear();
     if (!normalbar.empty()){
         for (auto bar : normalbar){
             normalbar_image_position.x = bar.GetStartPos();
@@ -106,6 +107,7 @@ void Renderer::SetBarHeight(std::deque<Normalbar>& normalbar,
     
     SDL_Rect movingbar_image_position;
     movingbar_image_position.h = kBarThickness;
+    movingbar_image_position_group.clear();
     if (!movingbar.empty()){
         for (auto bar : movingbar){
             movingbar_image_position.x = bar.GetStartPos();
@@ -118,6 +120,7 @@ void Renderer::SetBarHeight(std::deque<Normalbar>& normalbar,
 
     SDL_Rect damagebar_image_position;
     damagebar_image_position.h = kBarThickness;
+    damagebar_image_position_group.clear();
     if (!damagebar.empty()){
         for (auto bar : damagebar){
             damagebar_image_position.x = bar.GetStartPos();
