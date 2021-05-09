@@ -35,7 +35,8 @@ void Game::Run(Controller &controller, Renderer &renderer,
         // Hold the game before user press down key
         while(wait) {
             controller.StartGame(wait, _kid, renderer);
-            renderer.Draw(_kid);}
+            renderer.Draw(_kid);
+        }
         // Keep track of how long each loop through the input/update/render cycle takes
         frame_count++;
         frame_duration = frame_end - frame_start;

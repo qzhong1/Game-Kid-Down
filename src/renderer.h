@@ -30,17 +30,19 @@ public:
     std::deque<SDL_Rect>     movingbar_image_position_group;
     std::deque<SDL_Rect>     normalbar_image_position_group;
 private:
+    SDL_Surface     *message1;
+    SDL_Surface     *message2;
+    SDL_Surface     *bloodbar_txt;
+    SDL_Surface     *kid_image;
+    SDL_Surface     *background_image;
+    SDL_Surface     *damagebar_image;
+    SDL_Surface     *movingbar_image;
+    SDL_Surface     *normalbar_image;
 
-    SDL_Surface *kid_image;
-    SDL_Surface *background_image;
-    SDL_Surface *damagebar_image;
-    SDL_Surface *movingbar_image;
-    SDL_Surface *normalbar_image;
+    SDL_Window      *sdl_window;
+    SDL_Surface     *sdl_window_surface;
 
-    SDL_Window  *sdl_window;
-    SDL_Surface *sdl_window_surface;
-
-    SDL_Renderer *sdl_renderer;
+    TTF_Font        *font;
 };
 
 #endif

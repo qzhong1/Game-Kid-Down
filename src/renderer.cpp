@@ -38,7 +38,6 @@ Renderer::Renderer(int screen_width, int screen_height)
         std::cout << "Failed to load kid image\n";
         std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
     }
-    // kid_image_position.x = 320;
     kid_image_position.y = 0;
     kid_image_position.w = kKidWidth;
     kid_image_position.h = kKidHeight;
@@ -59,6 +58,23 @@ Renderer::Renderer(int screen_width, int screen_height)
     if(!normalbar_image)
     {
         std::cout << "Failed to load normalbar image\n";
+        std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
+    }
+
+    if(TTF_Init() < 0) {
+        std::cout << "Failed to initialize the TTF library\n";
+        std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
+    }
+    font = TTF_OpenFont("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 20);
+    if (font == NULL){
+        std::cout << "Failed to load font\n";
+        std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
+    }
+    message1 = TTF_RenderText_Solid(font, "Press down to start the game", {111,0,255});
+    message2 = TTF_RenderText_Solid(font, "Press Left and Right to move", {111,0,255});
+    bloodbar_txt = TTF_RenderText_Solid(font, "Blood", {255, 0, 0});
+    if (message1 == NULL || message2 == NULL || bloodbar_txt == NULL) {
+        std::cout << "Failed to load message\n";
         std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
     }
 }
@@ -86,6 +102,12 @@ void Renderer::Draw(Kid &kid){
     for(auto position : damagebar_image_position_group){
         SDL_BlitScaled(damagebar_image, NULL, sdl_window_surface, &position);
     }
+    SDL_Rect message_location1 = {320, 0, 200, 20};
+    SDL_Rect message_location2 = {320, 20, 200, 20};
+    SDL_Rect bloodbar_txt_location = {0, 0, 0, 0};
+    SDL_BlitSurface(message1, NULL, sdl_window_surface, &message_location1);
+    SDL_BlitSurface(message2, NULL, sdl_window_surface, &message_location2);
+    SDL_BlitSurface(bloodbar_txt, NULL, sdl_window_surface, &bloodbar_txt_location);
     SDL_UpdateWindowSurface(sdl_window);
 }
 
