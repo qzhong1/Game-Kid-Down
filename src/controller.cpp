@@ -7,13 +7,17 @@ void Controller::HandleInput(bool &running, Kid &kid, Renderer &renderer){
         else if (e.type == SDL_KEYDOWN){
             switch (e.key.keysym.sym){
                 case SDLK_LEFT:
-                renderer.kid_image_position.x -= kid._speed;
-                kid._pos_x = renderer.kid_image_position.x;
-                break;
+                    if (renderer.kid_image_position.x > 0) {
+                        renderer.kid_image_position.x -= kid._speed;
+                        kid._pos_x = renderer.kid_image_position.x;
+                    }
+                    break;
                 case SDLK_RIGHT:
-                renderer.kid_image_position.x += kid._speed;
-                kid._pos_x = renderer.kid_image_position.x;
-                break;
+                    if (renderer.kid_image_position.x + kKidWidth < renderer.window_width) {
+                        renderer.kid_image_position.x += kid._speed;
+                        kid._pos_x = renderer.kid_image_position.x;
+                    }
+                    break;
             }
         }
     }
@@ -28,13 +32,17 @@ void Controller::StartGame(bool &wait, Kid &kid, Renderer &renderer){
                 wait = false;
                 break;
             case SDLK_LEFT:
-                renderer.kid_image_position.x -= kid._speed;
-                kid._pos_x = renderer.kid_image_position.x;
-                break;
-            case SDLK_RIGHT:
-                renderer.kid_image_position.x += kid._speed;
-                kid._pos_x = renderer.kid_image_position.x;
-                break;
+                    if (renderer.kid_image_position.x > 0) {
+                        renderer.kid_image_position.x -= kid._speed;
+                        kid._pos_x = renderer.kid_image_position.x;
+                    }
+                    break;
+                case SDLK_RIGHT:
+                    if (renderer.kid_image_position.x + kKidWidth < renderer.window_width) {
+                        renderer.kid_image_position.x += kid._speed;
+                        kid._pos_x = renderer.kid_image_position.x;
+                    }
+                    break;
             }
         else if (check.type == SDL_QUIT)
             wait = false;
