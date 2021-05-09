@@ -1,6 +1,7 @@
 #include "renderer.h"
 
-Renderer::Renderer(int screen_width, int screen_height)
+Renderer::Renderer(int screen_width, int screen_height): 
+        window_width(screen_width), window_height(screen_height)
 {
     if(SDL_Init(SDL_INIT_VIDEO) < 0)
     {
@@ -73,7 +74,7 @@ Renderer::Renderer(int screen_width, int screen_height)
         std::cout << "Failed to initialize the TTF library\n";
         std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
     }
-    font = TTF_OpenFont("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 20);
+    font = TTF_OpenFont("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 15);
     if (font == NULL){
         std::cout << "Failed to load font\n";
         std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
@@ -95,11 +96,22 @@ void Renderer::InitKidPos(Kid &kid){
     kid_image_position.x = kid._pos_x;
 }
 
-void Renderer::Draw(Kid &kid){
-
+void Renderer::Draw(Kid &kid, bool wait){
+    // Render background
     SDL_BlitSurface(background_image, NULL, sdl_window_surface, NULL);
+    // Render instruction if game is at waiting status
+    if (wait){
+        SDL_Rect message_location1 = {320, 0, 200, 15};
+        SDL_Rect message_location2 = {320, 15, 200, 15};
+        SDL_BlitSurface(message1, NULL, sdl_window_surface, &message_location1);
+        SDL_BlitSurface(message2, NULL, sdl_window_surface, &message_location2);
+    }
+    // Render blood bar
+    SDL_Rect bloodbar_txt_location = {0, 0, 0, 0};
+    SDL_BlitSurface(bloodbar_txt, NULL, sdl_window_surface, &bloodbar_txt_location);
+    SDL_BlitScaled(bloodbar_img, NULL, sdl_window_surface, &bloodbar_img_position);
+    //Render kid image
     SDL_BlitScaled(kid_image, NULL, sdl_window_surface, &kid_image_position);
-
     // Render bars
     for(auto position : normalbar_image_position_group){
         SDL_BlitScaled(normalbar_image, NULL, sdl_window_surface, &position);
@@ -110,13 +122,7 @@ void Renderer::Draw(Kid &kid){
     for(auto position : damagebar_image_position_group){
         SDL_BlitScaled(damagebar_image, NULL, sdl_window_surface, &position);
     }
-    SDL_Rect message_location1 = {320, 0, 200, 20};
-    SDL_Rect message_location2 = {320, 20, 200, 20};
-    SDL_Rect bloodbar_txt_location = {0, 0, 0, 0};
-    SDL_BlitSurface(message1, NULL, sdl_window_surface, &message_location1);
-    SDL_BlitSurface(message2, NULL, sdl_window_surface, &message_location2);
-    SDL_BlitSurface(bloodbar_txt, NULL, sdl_window_surface, &bloodbar_txt_location);
-    SDL_BlitScaled(bloodbar_img, NULL, sdl_window_surface, &bloodbar_img_position);
+    
     SDL_UpdateWindowSurface(sdl_window);
 }
 

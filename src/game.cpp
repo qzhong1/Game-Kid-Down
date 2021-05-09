@@ -29,13 +29,13 @@ void Game::Run(Controller &controller, Renderer &renderer,
         // Update bar image height
         renderer.SetBarHeight(_normalbar_group_present, _movingbar_group_present, _damagebar_group_present);
         ReplaceBar();
-        renderer.Draw(_kid);
+        renderer.Draw(_kid, wait);
         Update(renderer);
         frame_end = SDL_GetTicks();
         // Hold the game before user press down key
         while(wait) {
             controller.StartGame(wait, _kid, renderer);
-            renderer.Draw(_kid);
+            renderer.Draw(_kid, wait);
         }
         // Keep track of how long each loop through the input/update/render cycle takes
         frame_count++;
@@ -70,7 +70,10 @@ void Game::Update(Renderer &renderer){
             }
         }
         if (_kid.GetBarType() == moving) {
-
+            if (renderer.kid_image_position.x > 0) {
+                renderer.kid_image_position.x -= kCarouselSpeed;
+                _kid.MoveOnCarousel();
+            }
         }
     }
     renderer.kid_image_position.y = _kid._pos_y;
@@ -165,6 +168,7 @@ void Game::ReplaceBar() {
     _movingbar_group_present.back().GetCurrentHeight() < window_height - 60 &&
     _damagebar_group_present.back().GetCurrentHeight() < window_height - 60 ){
         PickNewBar(window_height);
+        score += 1;
     }
     if (!_normalbar_group_present.empty()) {
         if (_normalbar_group_present.front().GetCurrentHeight() <= 0){

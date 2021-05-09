@@ -17,13 +17,16 @@ class Renderer
 public:
     Renderer(int screen_width, int screen_height);
     ~Renderer();
-    void Draw(Kid &kid);
+    void Draw(Kid &kid, bool wait);
     void InitKidPos(Kid &kid);
     void SetBarHeight(std::deque<Normalbar>& normalbar, 
                       std::deque<Movingbar>& movingbar,
                       std::deque<Damagebar>& damagebar);
     void RenderBars();
     void UpdateWindowTitle(int score, int frame_count);
+
+    int window_width;
+    int window_height;
 
     SDL_Rect                 kid_image_position;
     SDL_Rect                 bloodbar_img_position;
