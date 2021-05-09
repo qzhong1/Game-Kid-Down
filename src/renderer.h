@@ -25,7 +25,8 @@ public:
     void RenderBars();
     void UpdateWindowTitle(int score, int frame_count);
 
-    SDL_Rect     kid_image_position;
+    SDL_Rect                 kid_image_position;
+    SDL_Rect                 bloodbar_img_position;
     std::deque<SDL_Rect>     damagebar_image_position_group;
     std::deque<SDL_Rect>     movingbar_image_position_group;
     std::deque<SDL_Rect>     normalbar_image_position_group;
@@ -33,6 +34,7 @@ private:
     SDL_Surface     *message1;
     SDL_Surface     *message2;
     SDL_Surface     *bloodbar_txt;
+    SDL_Surface     *bloodbar_img;
     SDL_Surface     *kid_image;
     SDL_Surface     *background_image;
     SDL_Surface     *damagebar_image;

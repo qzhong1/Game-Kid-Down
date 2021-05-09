@@ -61,6 +61,14 @@ Renderer::Renderer(int screen_width, int screen_height)
         std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
     }
 
+    bloodbar_img = IMG_Load("../img/Blood.jpg");
+    if(!bloodbar_img)
+    {
+        std::cout << "Failed to load blood bar image\n";
+        std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
+    }
+    bloodbar_img_position = {20, 20, 20, 600};
+
     if(TTF_Init() < 0) {
         std::cout << "Failed to initialize the TTF library\n";
         std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
@@ -108,6 +116,7 @@ void Renderer::Draw(Kid &kid){
     SDL_BlitSurface(message1, NULL, sdl_window_surface, &message_location1);
     SDL_BlitSurface(message2, NULL, sdl_window_surface, &message_location2);
     SDL_BlitSurface(bloodbar_txt, NULL, sdl_window_surface, &bloodbar_txt_location);
+    SDL_BlitScaled(bloodbar_img, NULL, sdl_window_surface, &bloodbar_img_position);
     SDL_UpdateWindowSurface(sdl_window);
 }
 
