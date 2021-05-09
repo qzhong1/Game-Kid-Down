@@ -63,6 +63,15 @@ void Game::Update(Renderer &renderer){
     _kid.FallOnBar(_normalbar_group_present, _movingbar_group_present, _damagebar_group_present);
     if (_kid.GetOnBar()) {
         _kid._pos_y -= kBarHeightIncrement;
+        if (_kid.GetBarType() == damaging) {
+            if (renderer.bloodbar_img_position.h > 0){
+                renderer.bloodbar_img_position.h -= kBloodDecrement;
+                _kid.ReduceBlood();
+            }
+        }
+        if (_kid.GetBarType() == moving) {
+
+        }
     }
     renderer.kid_image_position.y = _kid._pos_y;
 

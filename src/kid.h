@@ -10,16 +10,17 @@ constexpr std::size_t kKidWidth{20};
 enum Direction{kLeft, kRight};
 enum BarType {normal, moving, damaging, none};
 constexpr std::size_t kFallingSpeed{5};
+constexpr std::size_t kBloodDecrement{1};
 
 class Kid
 {
 private:
     
-    float _blood{10};
+    float _blood{600};
     int _grid_width;
     int _grid_height;
     bool _on_bar{true};
-    BarType _current_bar;
+    BarType _current_bar{none};
 
 public:
     bool _alive{true};
@@ -33,7 +34,8 @@ public:
     
     float GetBlood() {return _blood;};
     bool GetOnBar() {return _on_bar;}
-    void ReduceBlood(float time);
+    BarType GetBarType() {return _current_bar;}
+    void ReduceBlood() {_blood -= kBloodDecrement;};
     void FallOnBar(std::deque<Normalbar> &_normalbar_group,
                    std::deque<Movingbar> &_movingbar_group,
                    std::deque<Damagebar> &_damagebar_group);
