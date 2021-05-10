@@ -7,6 +7,7 @@
 #include <iostream>
 #include <memory>
 #include <deque>
+#include <string>
 #include "kid.h"
 #include "bar.h"
 
@@ -17,7 +18,7 @@ class Renderer
 public:
     Renderer(int screen_width, int screen_height);
     ~Renderer();
-    void Draw(Kid &kid, bool wait);
+    void Draw(Kid &kid, bool wait, int score);
     void InitKidPos(Kid &kid);
     void SetBarHeight(std::deque<Normalbar>& normalbar, 
                       std::deque<Movingbar>& movingbar,
@@ -36,6 +37,7 @@ public:
 private:
     SDL_Surface     *message1;
     SDL_Surface     *message2;
+    SDL_Surface     *score_text;
     SDL_Surface     *bloodbar_txt;
     SDL_Surface     *bloodbar_img;
     SDL_Surface     *kid_image;

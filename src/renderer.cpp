@@ -9,7 +9,7 @@ Renderer::Renderer(int screen_width, int screen_height):
         std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
     }
 
-    sdl_window = SDL_CreateWindow("SDL2 Window", SDL_WINDOWPOS_CENTERED,
+    sdl_window = SDL_CreateWindow("Kid Downstairs", SDL_WINDOWPOS_CENTERED,
                                 SDL_WINDOWPOS_CENTERED, screen_width, 
                                 screen_height, 0);
     if(!sdl_window)
@@ -96,15 +96,26 @@ void Renderer::InitKidPos(Kid &kid){
     kid_image_position.x = kid._pos_x;
 }
 
-void Renderer::Draw(Kid &kid, bool wait){
+void Renderer::Draw(Kid &kid, bool wait, int score){
     // Render background
     SDL_BlitSurface(background_image, NULL, sdl_window_surface, NULL);
     // Render instruction if game is at waiting status
+    SDL_Rect message_location1 = {320, 0, 200, 15};
     if (wait){
-        SDL_Rect message_location1 = {320, 0, 200, 15};
         SDL_Rect message_location2 = {320, 15, 200, 15};
         SDL_BlitSurface(message1, NULL, sdl_window_surface, &message_location1);
         SDL_BlitSurface(message2, NULL, sdl_window_surface, &message_location2);
+    }else {
+        std::string s = "Score: ";
+        s.append(std::to_string(score));
+        int n = s.length();
+        // declaring character array
+        char char_array[n + 1];
+        // copying the contents of the
+        // string to char array
+        strcpy(char_array, s.c_str());
+        score_text = TTF_RenderText_Solid(font, char_array, {255,0,0});
+        SDL_BlitSurface(score_text, NULL, sdl_window_surface, &message_location1);
     }
     // Render blood bar
     SDL_Rect bloodbar_txt_location = {0, 0, 0, 0};
