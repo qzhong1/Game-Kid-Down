@@ -29,13 +29,13 @@ void Game::Run(Controller &controller, Renderer &renderer,
         // Update bar image height
         renderer.SetBarHeight(_normalbar_group_present, _movingbar_group_present, _damagebar_group_present);
         ReplaceBar();
-        renderer.Draw(_kid, wait);
-        Update(renderer);
+        renderer.Draw(_kid, wait, score);
+        Update(renderer, running);
         frame_end = SDL_GetTicks();
         // Hold the game before user press down key
         while(wait) {
             controller.StartGame(wait, _kid, renderer);
-            renderer.Draw(_kid, wait);
+            renderer.Draw(_kid, wait, score);
         }
         // Keep track of how long each loop through the input/update/render cycle takes
         frame_count++;
@@ -57,9 +57,14 @@ void Game::Run(Controller &controller, Renderer &renderer,
     }
 }
 
-void Game::Update(Renderer &renderer){
+void Game::Update(Renderer &renderer, bool &running){
     if (!_kid._alive)
         return;
+    if (_kid._pos_y >= window_height || _kid._pos_y < 0 || renderer.bloodbar_img_position.h <= 0){
+        _kid._alive = false;
+        running = false;
+        return;
+    }
     _kid.FallOnBar(_normalbar_group_present, _movingbar_group_present, _damagebar_group_present);
     if (_kid.GetOnBar()) {
         _kid._pos_y -= kBarHeightIncrement;
@@ -97,10 +102,6 @@ void Game::Update(Renderer &renderer){
         }
     }
         
-}
-
-int Game::GetScore() const {
-
 }
 
 void Game::BarInitiate(){

@@ -10,6 +10,7 @@
 #include <vector>
 #include <deque>
 #include <random>
+#include <iostream>
 
 class Game
 {
@@ -33,7 +34,7 @@ private:
     int window_width;
     int window_height;
 
-    void Update(Renderer &renderer);
+    void Update(Renderer &renderer, bool &running);
     void BarInitiate();
     void PickNewBar(float height);
     void ReplaceBar(); 
@@ -43,8 +44,6 @@ public:
     Game(int w, int h);
     void Run(Controller &controller, Renderer &renderer,
            std::size_t target_frame_duration);
-    
-    int GetScore() const;
 
 };
 
