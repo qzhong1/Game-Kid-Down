@@ -30,13 +30,13 @@ void Game::Run(Controller &controller, Renderer &renderer,
             renderer.Draw(wait, score);
             Update(renderer, running);
         } else {
-            controller.EndFinal(running);
+            controller.EndFinal(running, _kid, wait, renderer, score);
             renderer.DrawFinal(score);
         }
         frame_end = SDL_GetTicks();  
         // Hold the game before user press down key
         while(wait) {
-            controller.StartGame(wait, _kid, renderer);
+            controller.StartGame(wait, _kid, renderer, running);
             renderer.Draw(wait, score);
         }
         // Keep track of how long each loop through the input/update/render cycle takes
@@ -55,28 +55,30 @@ void Game::Run(Controller &controller, Renderer &renderer,
 void Game::Update(Renderer &renderer, bool &running){
     if (!_kid._alive)
         return;
+    // Kid die if it fall out of the screen, or touches the ceiling, or stand 
+    // too long on spikes and blood bar fall to 0
     if (_kid._pos_y >= window_height || _kid._pos_y < 0 || renderer.bloodbar_img_position.h <= 0){
         _kid._alive = false;
-        // running = false;
         return;
     }
+    // Check if kid is on any bar
     _kid.FallOnBar(_normalbar_group_present, _movingbar_group_present, _damagebar_group_present);
     if (_kid.GetOnBar()) {
-        _kid._pos_y -= kBarHeightIncrement;
+        _kid._pos_y -= kBarHeightIncrement; // Kid raise with bar if kid is on bar
         if (_kid.GetBarType() == damaging) {
             if (renderer.bloodbar_img_position.h > 0){
                 renderer.bloodbar_img_position.h -= kBloodDecrement;
-                _kid.ReduceBlood();
+                _kid.ReduceBlood(); // Damaging bar cause blood damage
             }
         }
         if (_kid.GetBarType() == moving) {
             if (renderer.kid_image_position.x > 0) {
                 renderer.kid_image_position.x -= kCarouselSpeed;
-                _kid.MoveOnCarousel();
+                _kid.MoveOnCarousel(); // Moving bar keeps moving kid to the left
             }
         }
     }
-    renderer.kid_image_position.y = _kid._pos_y;
+    renderer.kid_image_position.y = _kid._pos_y; // Update kid image according to kid position
 
     // Update bar height
     if (!_normalbar_group_present.empty()) {
@@ -121,7 +123,7 @@ void Game::BarInitiate(){
     }
     // Pick 10 bars from the source for initial frame
     for (int i = 0; i <10; i++){
-        PickNewBar(i*60+60);
+        PickNewBar(i*60+60); // Each bar has a height difference of 60
 
         // Get the x position of the first bar to set kid initial position
         float init_kid_x;
