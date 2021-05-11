@@ -11,11 +11,9 @@ Game::Game(int w, int h)
 
 void Game::Run(Controller &controller, Renderer &renderer, 
                 std::size_t target_frame_duration) {
-    Uint32 title_timestamp = SDL_GetTicks();
     Uint32 frame_start;
     Uint32 frame_end;
     Uint32 frame_duration;
-    int frame_count = 0;
     bool running = true;
     bool wait = true;
 
@@ -23,29 +21,26 @@ void Game::Run(Controller &controller, Renderer &renderer,
     
     while (running) {
         frame_start = SDL_GetTicks();
-        
-        // Input, Update, Render - the main game loop
-        controller.HandleInput(running, _kid, renderer);
-        // Update bar image height
-        renderer.SetBarHeight(_normalbar_group_present, _movingbar_group_present, _damagebar_group_present);
-        ReplaceBar();
-        renderer.Draw(_kid, wait, score);
-        Update(renderer, running);
-        frame_end = SDL_GetTicks();
+        if (_kid._alive){
+            // Input, Update, Render - the main game loop
+            controller.HandleInput(running, _kid, renderer);
+            // Update bar image height
+            renderer.SetBarHeight(_normalbar_group_present, _movingbar_group_present, _damagebar_group_present);
+            ReplaceBar();
+            renderer.Draw(wait, score);
+            Update(renderer, running);
+        } else {
+            controller.EndFinal(running);
+            renderer.DrawFinal(score);
+        }
+        frame_end = SDL_GetTicks();  
         // Hold the game before user press down key
         while(wait) {
             controller.StartGame(wait, _kid, renderer);
-            renderer.Draw(_kid, wait, score);
+            renderer.Draw(wait, score);
         }
         // Keep track of how long each loop through the input/update/render cycle takes
-        frame_count++;
         frame_duration = frame_end - frame_start;
-
-        // After every second, update the window title.
-        if (frame_end - title_timestamp >= 1000) {
-            frame_count = 0;
-            title_timestamp = frame_end;
-        }
 
         // If the time for this frame is too small (i.e. frame_duration is
         // smaller than the target ms_per_frame), delay the loop to
@@ -62,7 +57,7 @@ void Game::Update(Renderer &renderer, bool &running){
         return;
     if (_kid._pos_y >= window_height || _kid._pos_y < 0 || renderer.bloodbar_img_position.h <= 0){
         _kid._alive = false;
-        running = false;
+        // running = false;
         return;
     }
     _kid.FallOnBar(_normalbar_group_present, _movingbar_group_present, _damagebar_group_present);
