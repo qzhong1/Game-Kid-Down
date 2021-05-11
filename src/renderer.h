@@ -25,6 +25,7 @@ public:
                       std::deque<Damagebar>& damagebar);
     void RenderBars();
     void DrawFinal(int score); // Display scene after game ends
+    void ResetScore(int &score) {score = 0;}
 
     int window_width;
     int window_height;
@@ -49,6 +50,8 @@ private:
     SDL_Surface     *damagebar_image;
     SDL_Surface     *movingbar_image;
     SDL_Surface     *normalbar_image;
+    SDL_Surface     *restart_button;
+    SDL_Rect        restart_button_pos{280, 280, 80, 80};
 
     SDL_Window      *sdl_window;
     SDL_Surface     *sdl_window_surface;

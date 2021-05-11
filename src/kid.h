@@ -37,6 +37,7 @@ public:
     bool GetOnBar() {return _on_bar;}
     BarType GetBarType() {return _current_bar;}
     void ReduceBlood() {_blood -= kBloodDecrement;};
+    void ResetBlood() {_blood = 600;}
     void MoveOnCarousel() {_pos_x -= kCarouselSpeed;};
     void FallOnBar(std::deque<Normalbar> &_normalbar_group,
                    std::deque<Movingbar> &_movingbar_group,

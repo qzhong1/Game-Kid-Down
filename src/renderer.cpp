@@ -93,6 +93,13 @@ Renderer::Renderer(int screen_width, int screen_height):
         std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
     }
     ending_msg1 = TTF_RenderText_Solid(ending_font, "You are DEAD", {255,0,0});
+
+    restart_button = IMG_Load("../img/Restart.png");
+    if(!restart_button)
+    {
+        std::cout << "Failed to load restart button image\n";
+        std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
+    }
 }
 
 Renderer::~Renderer(){
@@ -121,7 +128,7 @@ void Renderer::Draw(bool wait, int score){
         // copying the contents of the
         // string to char array
         strcpy(char_array, s.c_str());
-        score_text = TTF_RenderText_Solid(font, char_array, {255,0,0});
+        score_text = TTF_RenderText_Solid(ending_font, char_array, {255,0,0});
         SDL_BlitSurface(score_text, NULL, sdl_window_surface, &message_location1);
     }
     // Render blood bar
@@ -158,7 +165,7 @@ void Renderer::DrawFinal(int score) {
     strcpy(char_array, s.c_str());
     ending_msg2 = TTF_RenderText_Solid(ending_font, char_array, {255,0,0});
     SDL_BlitSurface(ending_msg2, NULL, sdl_window_surface, &ending_msg2_pos);
-
+    SDL_BlitScaled(restart_button, NULL, sdl_window_surface, &restart_button_pos);
     SDL_UpdateWindowSurface(sdl_window);
 }
 
