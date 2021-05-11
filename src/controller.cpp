@@ -48,3 +48,10 @@ void Controller::StartGame(bool &wait, Kid &kid, Renderer &renderer){
             wait = false;
     }
 }
+
+void Controller::EndFinal(bool &running){
+    while (SDL_PollEvent(&e)) {
+        if (e.type == SDL_QUIT)
+            running = false;
+    }
+}

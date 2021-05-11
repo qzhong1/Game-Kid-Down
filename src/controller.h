@@ -16,6 +16,7 @@ public:
     SDL_Event check;
     void HandleInput(bool &running, Kid &kid, Renderer &renderer);
     void StartGame(bool &wait, Kid &kid, Renderer &renderer);
+    void EndFinal(bool &running);
 };
 
 #endif
