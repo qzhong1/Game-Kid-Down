@@ -74,7 +74,7 @@ Renderer::Renderer(int screen_width, int screen_height):
         std::cout << "Failed to initialize the TTF library\n";
         std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
     }
-    font = TTF_OpenFont("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 15);
+    font = TTF_OpenFont("../ttf/DejaVuSans.ttf", 15);
     if (font == NULL){
         std::cout << "Failed to load font\n";
         std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
@@ -86,6 +86,13 @@ Renderer::Renderer(int screen_width, int screen_height):
         std::cout << "Failed to load message\n";
         std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
     }
+
+    ending_font = TTF_OpenFont("../ttf/DejaVuSans.ttf", 40);
+    if (font == NULL){
+        std::cout << "Failed to load font\n";
+        std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
+    }
+    ending_msg1 = TTF_RenderText_Solid(ending_font, "You are DEAD", {255,0,0});
 }
 
 Renderer::~Renderer(){
@@ -96,7 +103,7 @@ void Renderer::InitKidPos(Kid &kid){
     kid_image_position.x = kid._pos_x;
 }
 
-void Renderer::Draw(Kid &kid, bool wait, int score){
+void Renderer::Draw(bool wait, int score){
     // Render background
     SDL_BlitSurface(background_image, NULL, sdl_window_surface, NULL);
     // Render instruction if game is at waiting status
@@ -134,6 +141,24 @@ void Renderer::Draw(Kid &kid, bool wait, int score){
         SDL_BlitScaled(damagebar_image, NULL, sdl_window_surface, &position);
     }
     
+    SDL_UpdateWindowSurface(sdl_window);
+}
+
+void Renderer::DrawFinal(int score) {
+    SDL_FillRect(sdl_window_surface, NULL, 0x000000);
+    SDL_BlitSurface(ending_msg1, NULL, sdl_window_surface, &ending_msg1_pos);
+
+    std::string s = "Final Score: ";
+    s.append(std::to_string(score));
+    int n = s.length();
+    // declaring character array
+    char char_array[n + 1];
+    // copying the contents of the
+    // string to char array
+    strcpy(char_array, s.c_str());
+    ending_msg2 = TTF_RenderText_Solid(ending_font, char_array, {255,0,0});
+    SDL_BlitSurface(ending_msg2, NULL, sdl_window_surface, &ending_msg2_pos);
+
     SDL_UpdateWindowSurface(sdl_window);
 }
 
@@ -178,8 +203,4 @@ void Renderer::SetBarHeight(std::deque<Normalbar>& normalbar,
         }
     }
     
-}
-
-void UpdateWindowTitle(int score, int frame_count){
-
 }

@@ -18,13 +18,13 @@ class Renderer
 public:
     Renderer(int screen_width, int screen_height);
     ~Renderer();
-    void Draw(Kid &kid, bool wait, int score);
+    void Draw(bool wait, int score);
     void InitKidPos(Kid &kid);
     void SetBarHeight(std::deque<Normalbar>& normalbar, 
                       std::deque<Movingbar>& movingbar,
                       std::deque<Damagebar>& damagebar);
     void RenderBars();
-    void UpdateWindowTitle(int score, int frame_count);
+    void DrawFinal(int score); // Display scene after game ends
 
     int window_width;
     int window_height;
@@ -37,6 +37,10 @@ public:
 private:
     SDL_Surface     *message1;
     SDL_Surface     *message2;
+    SDL_Surface     *ending_msg1;
+    SDL_Rect        ending_msg1_pos{0, 0, 200, 100};
+    SDL_Surface     *ending_msg2;
+    SDL_Rect        ending_msg2_pos{0, 40, 200, 100};
     SDL_Surface     *score_text;
     SDL_Surface     *bloodbar_txt;
     SDL_Surface     *bloodbar_img;
@@ -50,6 +54,7 @@ private:
     SDL_Surface     *sdl_window_surface;
 
     TTF_Font        *font;
+    TTF_Font        *ending_font;
 };
 
 #endif
