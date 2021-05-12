@@ -4,7 +4,7 @@ This is the repo for the Capstone project in the [Udacity C++ Nanodegree Program
 
 In this project, a 2D game of a kid (more like a stickman figure) going downstairs are created. The player needs to control the motion of the kid using left and right key on the keyboard. Press down key to start the game. The goal is to keep the kid on the raising bars without touching the ceiling or falling to the bottom. If the kid stands on the spiky bar, the blood bar will decrease. The kid dies when blood bar goes to zero.
 
-
+<img src="img/Demo.gif"/>
 
 ## Code Overview
 * SDL2 library is used to render the game window and gain control of the game figure. Class Renderer and class controller is created for those purposes.
