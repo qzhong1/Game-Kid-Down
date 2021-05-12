@@ -123,6 +123,114 @@ KidDown/fast:
 	$(MAKE) -f CMakeFiles/KidDown.dir/build.make CMakeFiles/KidDown.dir/build
 .PHONY : KidDown/fast
 
+src/bar.o: src/bar.cpp.o
+
+.PHONY : src/bar.o
+
+# target to build an object file
+src/bar.cpp.o:
+	$(MAKE) -f CMakeFiles/KidDown.dir/build.make CMakeFiles/KidDown.dir/src/bar.cpp.o
+.PHONY : src/bar.cpp.o
+
+src/bar.i: src/bar.cpp.i
+
+.PHONY : src/bar.i
+
+# target to preprocess a source file
+src/bar.cpp.i:
+	$(MAKE) -f CMakeFiles/KidDown.dir/build.make CMakeFiles/KidDown.dir/src/bar.cpp.i
+.PHONY : src/bar.cpp.i
+
+src/bar.s: src/bar.cpp.s
+
+.PHONY : src/bar.s
+
+# target to generate assembly for a file
+src/bar.cpp.s:
+	$(MAKE) -f CMakeFiles/KidDown.dir/build.make CMakeFiles/KidDown.dir/src/bar.cpp.s
+.PHONY : src/bar.cpp.s
+
+src/controller.o: src/controller.cpp.o
+
+.PHONY : src/controller.o
+
+# target to build an object file
+src/controller.cpp.o:
+	$(MAKE) -f CMakeFiles/KidDown.dir/build.make CMakeFiles/KidDown.dir/src/controller.cpp.o
+.PHONY : src/controller.cpp.o
+
+src/controller.i: src/controller.cpp.i
+
+.PHONY : src/controller.i
+
+# target to preprocess a source file
+src/controller.cpp.i:
+	$(MAKE) -f CMakeFiles/KidDown.dir/build.make CMakeFiles/KidDown.dir/src/controller.cpp.i
+.PHONY : src/controller.cpp.i
+
+src/controller.s: src/controller.cpp.s
+
+.PHONY : src/controller.s
+
+# target to generate assembly for a file
+src/controller.cpp.s:
+	$(MAKE) -f CMakeFiles/KidDown.dir/build.make CMakeFiles/KidDown.dir/src/controller.cpp.s
+.PHONY : src/controller.cpp.s
+
+src/game.o: src/game.cpp.o
+
+.PHONY : src/game.o
+
+# target to build an object file
+src/game.cpp.o:
+	$(MAKE) -f CMakeFiles/KidDown.dir/build.make CMakeFiles/KidDown.dir/src/game.cpp.o
+.PHONY : src/game.cpp.o
+
+src/game.i: src/game.cpp.i
+
+.PHONY : src/game.i
+
+# target to preprocess a source file
+src/game.cpp.i:
+	$(MAKE) -f CMakeFiles/KidDown.dir/build.make CMakeFiles/KidDown.dir/src/game.cpp.i
+.PHONY : src/game.cpp.i
+
+src/game.s: src/game.cpp.s
+
+.PHONY : src/game.s
+
+# target to generate assembly for a file
+src/game.cpp.s:
+	$(MAKE) -f CMakeFiles/KidDown.dir/build.make CMakeFiles/KidDown.dir/src/game.cpp.s
+.PHONY : src/game.cpp.s
+
+src/kid.o: src/kid.cpp.o
+
+.PHONY : src/kid.o
+
+# target to build an object file
+src/kid.cpp.o:
+	$(MAKE) -f CMakeFiles/KidDown.dir/build.make CMakeFiles/KidDown.dir/src/kid.cpp.o
+.PHONY : src/kid.cpp.o
+
+src/kid.i: src/kid.cpp.i
+
+.PHONY : src/kid.i
+
+# target to preprocess a source file
+src/kid.cpp.i:
+	$(MAKE) -f CMakeFiles/KidDown.dir/build.make CMakeFiles/KidDown.dir/src/kid.cpp.i
+.PHONY : src/kid.cpp.i
+
+src/kid.s: src/kid.cpp.s
+
+.PHONY : src/kid.s
+
+# target to generate assembly for a file
+src/kid.cpp.s:
+	$(MAKE) -f CMakeFiles/KidDown.dir/build.make CMakeFiles/KidDown.dir/src/kid.cpp.s
+.PHONY : src/kid.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -186,6 +294,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... KidDown"
 	@echo "... edit_cache"
+	@echo "... src/bar.o"
+	@echo "... src/bar.i"
+	@echo "... src/bar.s"
+	@echo "... src/controller.o"
+	@echo "... src/controller.i"
+	@echo "... src/controller.s"
+	@echo "... src/game.o"
+	@echo "... src/game.i"
+	@echo "... src/game.s"
+	@echo "... src/kid.o"
+	@echo "... src/kid.i"
+	@echo "... src/kid.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

@@ -4,6 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/workspace/CppND-Capstone-Hello-World/src/bar.cpp" "/home/workspace/CppND-Capstone-Hello-World/build/CMakeFiles/KidDown.dir/src/bar.cpp.o"
+  "/home/workspace/CppND-Capstone-Hello-World/src/controller.cpp" "/home/workspace/CppND-Capstone-Hello-World/build/CMakeFiles/KidDown.dir/src/controller.cpp.o"
+  "/home/workspace/CppND-Capstone-Hello-World/src/game.cpp" "/home/workspace/CppND-Capstone-Hello-World/build/CMakeFiles/KidDown.dir/src/game.cpp.o"
+  "/home/workspace/CppND-Capstone-Hello-World/src/kid.cpp" "/home/workspace/CppND-Capstone-Hello-World/build/CMakeFiles/KidDown.dir/src/kid.cpp.o"
   "/home/workspace/CppND-Capstone-Hello-World/src/main.cpp" "/home/workspace/CppND-Capstone-Hello-World/build/CMakeFiles/KidDown.dir/src/main.cpp.o"
   "/home/workspace/CppND-Capstone-Hello-World/src/renderer.cpp" "/home/workspace/CppND-Capstone-Hello-World/build/CMakeFiles/KidDown.dir/src/renderer.cpp.o"
   )

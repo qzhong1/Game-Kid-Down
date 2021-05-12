@@ -83,19 +83,82 @@ CMakeFiles/KidDown.dir/src/renderer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KidDown.dir/src/renderer.cpp.s"
 	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/workspace/CppND-Capstone-Hello-World/src/renderer.cpp -o CMakeFiles/KidDown.dir/src/renderer.cpp.s
 
+CMakeFiles/KidDown.dir/src/controller.cpp.o: CMakeFiles/KidDown.dir/flags.make
+CMakeFiles/KidDown.dir/src/controller.cpp.o: ../src/controller.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/workspace/CppND-Capstone-Hello-World/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/KidDown.dir/src/controller.cpp.o"
+	/usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KidDown.dir/src/controller.cpp.o -c /home/workspace/CppND-Capstone-Hello-World/src/controller.cpp
+
+CMakeFiles/KidDown.dir/src/controller.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KidDown.dir/src/controller.cpp.i"
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/workspace/CppND-Capstone-Hello-World/src/controller.cpp > CMakeFiles/KidDown.dir/src/controller.cpp.i
+
+CMakeFiles/KidDown.dir/src/controller.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KidDown.dir/src/controller.cpp.s"
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/workspace/CppND-Capstone-Hello-World/src/controller.cpp -o CMakeFiles/KidDown.dir/src/controller.cpp.s
+
+CMakeFiles/KidDown.dir/src/game.cpp.o: CMakeFiles/KidDown.dir/flags.make
+CMakeFiles/KidDown.dir/src/game.cpp.o: ../src/game.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/workspace/CppND-Capstone-Hello-World/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/KidDown.dir/src/game.cpp.o"
+	/usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KidDown.dir/src/game.cpp.o -c /home/workspace/CppND-Capstone-Hello-World/src/game.cpp
+
+CMakeFiles/KidDown.dir/src/game.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KidDown.dir/src/game.cpp.i"
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/workspace/CppND-Capstone-Hello-World/src/game.cpp > CMakeFiles/KidDown.dir/src/game.cpp.i
+
+CMakeFiles/KidDown.dir/src/game.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KidDown.dir/src/game.cpp.s"
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/workspace/CppND-Capstone-Hello-World/src/game.cpp -o CMakeFiles/KidDown.dir/src/game.cpp.s
+
+CMakeFiles/KidDown.dir/src/bar.cpp.o: CMakeFiles/KidDown.dir/flags.make
+CMakeFiles/KidDown.dir/src/bar.cpp.o: ../src/bar.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/workspace/CppND-Capstone-Hello-World/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/KidDown.dir/src/bar.cpp.o"
+	/usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KidDown.dir/src/bar.cpp.o -c /home/workspace/CppND-Capstone-Hello-World/src/bar.cpp
+
+CMakeFiles/KidDown.dir/src/bar.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KidDown.dir/src/bar.cpp.i"
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/workspace/CppND-Capstone-Hello-World/src/bar.cpp > CMakeFiles/KidDown.dir/src/bar.cpp.i
+
+CMakeFiles/KidDown.dir/src/bar.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KidDown.dir/src/bar.cpp.s"
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/workspace/CppND-Capstone-Hello-World/src/bar.cpp -o CMakeFiles/KidDown.dir/src/bar.cpp.s
+
+CMakeFiles/KidDown.dir/src/kid.cpp.o: CMakeFiles/KidDown.dir/flags.make
+CMakeFiles/KidDown.dir/src/kid.cpp.o: ../src/kid.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/workspace/CppND-Capstone-Hello-World/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/KidDown.dir/src/kid.cpp.o"
+	/usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KidDown.dir/src/kid.cpp.o -c /home/workspace/CppND-Capstone-Hello-World/src/kid.cpp
+
+CMakeFiles/KidDown.dir/src/kid.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KidDown.dir/src/kid.cpp.i"
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/workspace/CppND-Capstone-Hello-World/src/kid.cpp > CMakeFiles/KidDown.dir/src/kid.cpp.i
+
+CMakeFiles/KidDown.dir/src/kid.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KidDown.dir/src/kid.cpp.s"
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/workspace/CppND-Capstone-Hello-World/src/kid.cpp -o CMakeFiles/KidDown.dir/src/kid.cpp.s
+
 # Object files for target KidDown
 KidDown_OBJECTS = \
 "CMakeFiles/KidDown.dir/src/main.cpp.o" \
-"CMakeFiles/KidDown.dir/src/renderer.cpp.o"
+"CMakeFiles/KidDown.dir/src/renderer.cpp.o" \
+"CMakeFiles/KidDown.dir/src/controller.cpp.o" \
+"CMakeFiles/KidDown.dir/src/game.cpp.o" \
+"CMakeFiles/KidDown.dir/src/bar.cpp.o" \
+"CMakeFiles/KidDown.dir/src/kid.cpp.o"
 
 # External object files for target KidDown
 KidDown_EXTERNAL_OBJECTS =
 
 KidDown: CMakeFiles/KidDown.dir/src/main.cpp.o
 KidDown: CMakeFiles/KidDown.dir/src/renderer.cpp.o
+KidDown: CMakeFiles/KidDown.dir/src/controller.cpp.o
+KidDown: CMakeFiles/KidDown.dir/src/game.cpp.o
+KidDown: CMakeFiles/KidDown.dir/src/bar.cpp.o
+KidDown: CMakeFiles/KidDown.dir/src/kid.cpp.o
 KidDown: CMakeFiles/KidDown.dir/build.make
+KidDown: /usr/lib/x86_64-linux-gnu/libSDL2.so
+KidDown: /usr/lib/x86_64-linux-gnu/libSDL2main.a
+KidDown: /usr/lib/x86_64-linux-gnu/libSDL2_image.so
 KidDown: CMakeFiles/KidDown.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/workspace/CppND-Capstone-Hello-World/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable KidDown"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/workspace/CppND-Capstone-Hello-World/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable KidDown"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/KidDown.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

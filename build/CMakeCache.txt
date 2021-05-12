@@ -206,8 +206,44 @@ KidDown_BINARY_DIR:STATIC=/home/workspace/CppND-Capstone-Hello-World/build
 //Value Computed by CMake
 KidDown_SOURCE_DIR:STATIC=/home/workspace/CppND-Capstone-Hello-World
 
+//pkg-config executable
+PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
+
+//Path to a library.
+SDL2MAIN_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libSDL2main.a
+
 //The directory containing a CMake configuration file for SDL2.
 SDL2_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/SDL2
+
+//Path to a file.
+SDL2_IMAGE_INCLUDE_DIR:PATH=/usr/include/SDL2
+
+//Path to a library.
+SDL2_IMAGE_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libSDL2_image.so
+
+//Path to a file.
+SDL2_INCLUDE_DIR:PATH=/usr/include/SDL2
+
+//Where the SDL Library can be found
+SDL2_LIBRARY:STRING=/usr/lib/x86_64-linux-gnu/libSDL2.so;-lpthread
+
+//Path to a file.
+SDL2_TTF_INCLUDE_DIR:PATH=/usr/include/SDL2
+
+//Where the SDL2_ttf Library can be found
+SDL2_TTF_LIBRARY:STRING=/usr/lib/x86_64-linux-gnu/libSDL2_ttf.so
+
+//The directory containing a CMake configuration file for SDL2_image.
+SDL2_image_DIR:PATH=SDL2_image_DIR-NOTFOUND
+
+//The directory containing a CMake configuration file for SDL2_ttf.
+SDL2_ttf_DIR:PATH=SDL2_ttf_DIR-NOTFOUND
+
+//Path to a library.
+pkgcfg_lib_SDL2TTF_SDL2:FILEPATH=pkgcfg_lib_SDL2TTF_SDL2-NOTFOUND
+
+//Path to a library.
+pkgcfg_lib_SDL2TTF_SDL2_ttf:FILEPATH=pkgcfg_lib_SDL2TTF_SDL2_ttf-NOTFOUND
 
 
 ########################
@@ -288,6 +324,14 @@ CMAKE_GENERATOR_INSTANCE:INTERNAL=
 CMAKE_GENERATOR_PLATFORM:INTERNAL=
 //Name of generator toolset.
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
+//Have symbol pthread_create
+CMAKE_HAVE_LIBC_CREATE:INTERNAL=
+//Have library pthreads
+CMAKE_HAVE_PTHREADS_CREATE:INTERNAL=
+//Have library pthread
+CMAKE_HAVE_PTHREAD_CREATE:INTERNAL=1
+//Have include pthread.h
+CMAKE_HAVE_PTHREAD_H:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
 CMAKE_HOME_DIRECTORY:INTERNAL=/home/workspace/CppND-Capstone-Hello-World
@@ -351,4 +395,59 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding PkgConfig
+FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v0.29.1()]
+//Details about finding SDL2
+FIND_PACKAGE_MESSAGE_DETAILS_SDL2:INTERNAL=[/usr/lib/x86_64-linux-gnu/libSDL2.so;-lpthread][/usr/include/SDL2][v()]
+//Details about finding SDL2_TTF
+FIND_PACKAGE_MESSAGE_DETAILS_SDL2_TTF:INTERNAL=[/usr/lib/x86_64-linux-gnu/libSDL2_ttf.so][/usr/include/SDL2][v()]
+//Details about finding SDL2_image
+FIND_PACKAGE_MESSAGE_DETAILS_SDL2_image:INTERNAL=[/usr/lib/x86_64-linux-gnu/libSDL2_image.so][/usr/include/SDL2][v()]
+//Details about finding Threads
+FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
+PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
+SDL2TTF_CFLAGS:INTERNAL=-D_REENTRANT;-I/usr/include/SDL2
+SDL2TTF_CFLAGS_I:INTERNAL=
+SDL2TTF_CFLAGS_OTHER:INTERNAL=-D_REENTRANT
+SDL2TTF_FOUND:INTERNAL=1
+SDL2TTF_INCLUDEDIR:INTERNAL=/usr/include
+SDL2TTF_INCLUDE_DIRS:INTERNAL=/usr/include/SDL2
+SDL2TTF_LDFLAGS:INTERNAL=-lSDL2_ttf;-lSDL2
+SDL2TTF_LDFLAGS_OTHER:INTERNAL=
+SDL2TTF_LIBDIR:INTERNAL=/usr/lib/x86_64-linux-gnu
+SDL2TTF_LIBRARIES:INTERNAL=SDL2_ttf;SDL2
+SDL2TTF_LIBRARY_DIRS:INTERNAL=
+SDL2TTF_LIBS:INTERNAL=
+SDL2TTF_LIBS_L:INTERNAL=
+SDL2TTF_LIBS_OTHER:INTERNAL=
+SDL2TTF_LIBS_PATHS:INTERNAL=
+SDL2TTF_PREFIX:INTERNAL=/usr
+SDL2TTF_SDL2_ttf_INCLUDEDIR:INTERNAL=
+SDL2TTF_SDL2_ttf_LIBDIR:INTERNAL=
+SDL2TTF_SDL2_ttf_PREFIX:INTERNAL=
+SDL2TTF_SDL2_ttf_VERSION:INTERNAL=
+SDL2TTF_STATIC_CFLAGS:INTERNAL=-D_REENTRANT;-I/usr/include/SDL2
+SDL2TTF_STATIC_CFLAGS_I:INTERNAL=
+SDL2TTF_STATIC_CFLAGS_OTHER:INTERNAL=-D_REENTRANT
+SDL2TTF_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/SDL2
+SDL2TTF_STATIC_LDFLAGS:INTERNAL=-lSDL2_ttf;-lSDL2;-Wl,--no-undefined;-lm;-ldl;-lasound;-lm;-ldl;-lpthread;-lpulse-simple;-lpulse;-lsndio;-lX11;-lXext;-lXcursor;-lXinerama;-lXi;-lXrandr;-lXss;-lXxf86vm;-lwayland-egl;-lwayland-client;-lwayland-cursor;-lxkbcommon;-lpthread;-lrt
+SDL2TTF_STATIC_LDFLAGS_OTHER:INTERNAL=-Wl,--no-undefined
+SDL2TTF_STATIC_LIBDIR:INTERNAL=
+SDL2TTF_STATIC_LIBRARIES:INTERNAL=SDL2_ttf;SDL2;m;dl;asound;m;dl;pthread;pulse-simple;pulse;sndio;X11;Xext;Xcursor;Xinerama;Xi;Xrandr;Xss;Xxf86vm;wayland-egl;wayland-client;wayland-cursor;xkbcommon;pthread;rt
+SDL2TTF_STATIC_LIBRARY_DIRS:INTERNAL=
+SDL2TTF_STATIC_LIBS:INTERNAL=
+SDL2TTF_STATIC_LIBS_L:INTERNAL=
+SDL2TTF_STATIC_LIBS_OTHER:INTERNAL=
+SDL2TTF_STATIC_LIBS_PATHS:INTERNAL=
+SDL2TTF_VERSION:INTERNAL=2.0.14
+//ADVANCED property for variable: SDL2_IMAGE_INCLUDE_DIR
+SDL2_IMAGE_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: SDL2_IMAGE_LIBRARY
+SDL2_IMAGE_LIBRARY-ADVANCED:INTERNAL=1
+//Path to a library.
+SDL2_LIBRARY_TEMP:INTERNAL=/usr/lib/x86_64-linux-gnu/libSDL2.so
+SDL2_TTF_LIBRARY_TEMP:INTERNAL=/usr/lib/x86_64-linux-gnu/libSDL2_ttf.so
+__pkg_config_checked_SDL2TTF:INTERNAL=1
+prefix_result:INTERNAL=/usr/lib/x86_64-linux-gnu
 
