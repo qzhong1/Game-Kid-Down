@@ -17,5 +17,5 @@ include_directories(${SDL2TTF_INCLUDE_DIRS})
 
 add_executable(KidDown src/main.cpp src/renderer.cpp src/controller.cpp src/game.cpp src/bar.cpp src/kid.cpp)
 
-string(STRIP "${SDL2_LIBRARIES}" SDL2_LIBRARIES)
-target_link_libraries(KidDown ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${SDL2TTF_LIBRARIES})
+string(STRIP "${SDL2_LIBRARY}" SDL2_LIBRARY)
+target_link_libraries(KidDown ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2TTF_LIBRARY})
